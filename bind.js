@@ -56,5 +56,4 @@ Function.prototype.mybind = function (thisArg) {
 
 const fn = [].slice.mybind(arr, 1);
 
-
 console.log(fn());

@@ -7,7 +7,7 @@ Function.prototype.fake_apply = function (thisArg) {
   // 1. 拿到参数
   const args = arguments[1];
   // 2. 拿到需要重新指向的this
-  thisArg = thisArg || window || global;
+  thisArg = thisArg || global;
   // 执行 thisArg.this （this is a function）
 
   // 防止fn被占用
@@ -15,9 +15,12 @@ Function.prototype.fake_apply = function (thisArg) {
 
   thisArg[fn] = this;
 
-  const result = thisArg[fn](args);
+  const result = thisArg[fn](...args);
 
   delete thisArg[fn];
 
   return result;
 }
+
+let a = String.fromCharCode.fake_apply(null, [97, 98]);
+console.log(a);
