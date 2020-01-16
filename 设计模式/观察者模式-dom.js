@@ -103,11 +103,11 @@ class Dom {
 let div = new Dom();
 let p = new Dom();
 
-// click是一个订阅者
+// div订阅了click
 div.addEventListener('click', function () {
   console.log("div 点击事件");
 })
-// hover是另外一个订阅者
+// div订阅了hover
 div.addEventListener('hover', function () {
   console.log("div 遮罩事件");
 })
@@ -125,3 +125,6 @@ div.hover();
 
 p.click();
 p.hover();
+
+// 勘误
+// 以上例子都不是发布者-订阅模式。发布订阅模式和观察者模式二者相似。但还是有些许不同

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <p> {{ msg.content }} </p>
+    <input type="text" v-model="input">
+  </div>
+
+</body>
+<script src="./发布者-订阅者模式-mvvm.js"></script>
+<script>
+  let vm = new Vue({
+    el: '#app',
+    data: {
+      msg: {
+        content: 'Hello, Vue.js'
+      },
+      input: "Hello, Vue.js"
+    }
+  })
+</script>
+
+</html>
