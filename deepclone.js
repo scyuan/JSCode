@@ -1,10 +1,30 @@
 // 基本类型：number,string,undefined,null,symbol,boolean,object,function
 // 内置对象：Date,Number,String,Array,Boolean,RegExp,Math
 
-function deepclone(obj) {
-  if (!obj) {
 
+function checkType(obj, type) {
+  return Object.prototype.toString.call(obj).slice(8, -1) === type;
+}
+
+function deepclone(obj) {
+  if (!obj) return obj;
+  let result;
+  if (checkType(obj, 'Object')) {
+    result = {};
+  } else if (checkType(obj, 'Array')) {
+    result = [];
+  } else {
+    return obj;
   }
+  for (let key in obj) {
+    let val = obj[key];
+    if (checkType(val, 'Object') || checkType(val, 'Array')) {
+      result[key] = deepclone(val);
+    } else {
+      result[key] = val;
+    }
+  }
+  return result;
 }
 
 let obj = {
@@ -32,3 +52,8 @@ let copy = JSON.parse(JSON.stringify(obj));
 copy.object = {
   obj: 'obj1'
 };
+
+let copy1 = deepclone(obj);
+
+console.log(copy1 === obj, copy === obj);
+console.log(copy1);

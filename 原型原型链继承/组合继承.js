@@ -21,13 +21,16 @@ function Cat(name, age) {
 // 原型继承
 Cat.prototype = new Animal();
 // 不是很懂这一步
-Cat.prototype.constructor = Cat;
+// Cat.prototype.constructor = Cat;
 Cat.prototype.sayAge = function () {
   console.log('my age is', this.age);
 }
 
 let cat1 = new Cat('jack', 10);
 let cat2 = new Cat('bob', 12);
+
+console.log(cat1 instanceof Cat);
+console.log(cat1 instanceof Animal);
 
 cat1.colors.push('red');
 cat2.colors.push('white');

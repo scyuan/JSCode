@@ -14,7 +14,7 @@
 // 继承（克隆）超类的原型
 
 function inheritPrototype(subType, superType) {
-  let prototype = Object(superType.prototype); // 创建对象
+  let prototype = Object.create(superType.prototype); // 创建对象
   prototype.constructor = subType; // 增强对象 
   subType.prototype = prototype; // 指定对象
 }

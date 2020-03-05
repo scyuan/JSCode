@@ -55,5 +55,11 @@ Function.prototype.mybind = function (thisArg) {
 }
 
 const fn = [].slice.mybind(arr, 1);
+let name = '123';
+const fn1 = (() => {
+  console.log(name)
+}).mybind(this, 1);
+
+new fn1();
 
 console.log(fn());
